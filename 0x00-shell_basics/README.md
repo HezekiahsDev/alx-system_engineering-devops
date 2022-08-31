@@ -10,3 +10,7 @@ Task 1. What's in there?
 Task 2. There is no place like home
 
 	To change the working directory to user's home directory
+
+Task 3. The long format
+
+	To  display current directory contents  in  long  format
