@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script lists the PID Pname, of processes whose name contain the word bash without using 'ps'
+
+pgrep -l bash
