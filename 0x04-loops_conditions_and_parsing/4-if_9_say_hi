@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# A script that displays Best School 10 times and hi after the 9th using while and if
+# Thia script displays Best School 10 times and hi after the 9th
+# using a while loop and an if statement
 
 i=0
 
