@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script parses apache log files into a list
+
+dispfile="apache-access.log"
+awk -F' ' '{ print $1, $9}' $dispfile
