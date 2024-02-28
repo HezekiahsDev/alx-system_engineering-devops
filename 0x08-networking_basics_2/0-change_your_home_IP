@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configure hosts file for an Ubuntu server:
+# - Map localhost to 127.0.0.2
+# - Map facebook.com to 8.8.8.8
+
+# Create a new hosts file based on the existing one
+cp /etc/hosts ~/hosts.new
+
+# Add mappings for localhost and facebook.com to the new hosts file
+echo "127.0.0.2       localhost" > ~/hosts.new
+echo "8.8.8.8         facebook.com" >> ~/hosts.new
+
+# Replace the original hosts file with the new one
+cp -f ~/hosts.new /etc/hosts

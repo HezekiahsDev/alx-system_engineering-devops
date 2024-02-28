@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script to list all active IPv4 addresses on the local machine.
+
+# Use ifconfig to retrieve network interface information, filter out IPv4 addresses,
+# and extract only the IP addresses.
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 6-
