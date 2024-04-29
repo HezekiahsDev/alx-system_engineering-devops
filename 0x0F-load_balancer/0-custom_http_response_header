@@ -1,36 +1,31 @@
 #!/usr/bin/env bash
-
-# Custom https header
-
-# Update package repositories and install Nginx
+# Configure Nginx servers (on web-01 and 02)such that contain custom HTTP response header
+# name of the header: X-Served-By
+# value: hostname
 sudo apt-get update
 sudo apt-get -y install nginx
 
-# Check if Nginx installation was successful
-if [ $? -ne 0 ]; then
-    echo "Nginx installation failed. Exiting."
-    exit 1
-fi
-
-# Configure firewall to allow HTTP traffic
+# allow firewall for nginx requests through :80
 sudo ufw allow 'Nginx HTTP'
 
-# Create directory for web content
 sudo mkdir -p /var/www/html
 
-# Set permissions for web directory
+# grant permissions
 sudo chmod -R 755 /var/www
 
-# Create index page
-echo 'Hello World!' | sudo tee /var/www/html/index.html
+#  create index html page
+echo 'Welcome to my server!' |sudo tee  /var/www/html/index.html
 
-# Create custom 404 error page
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+# create error html page
+echo "This page does not exist" |sudo tee /var/www/html/404.html
 
-# Configure Nginx to include custom header and redirect
-sudo sed -i.bak '/server_name _;/a \ \n\tadd_header X-Served-By $(hostname);' /etc/nginx/sites-enabled/default
-sudo sed -i.bak 's/#error_page 404 \/404.html;/error_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}/' /etc/nginx/sites-enabled/default
+# redirect and display hostname
+string_for_replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.blog.ehoneahobed.com permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-# Restart Nginx
+# redirect to 404 error html page
+string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+# restart web server
 sudo service nginx restart
-
