@@ -20,7 +20,8 @@ echo 'Welcome to my server!' |sudo tee  /var/www/html/index.html
 echo "This page does not exist" |sudo tee /var/www/html/404.html
 
 # redirect and display hostname
-replace="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.blog.ehoneahobed.com permanent;"
+hostname=""
+replace="server_name _;\n\tadd_header X-Served-By \$hostname;\n\t"
 sudo sed -i "s/server_name _;/$replace/" /etc/nginx/sites-enabled/default
 
 # redirect to 404 error html page
