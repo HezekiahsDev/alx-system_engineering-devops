@@ -1,0 +1,29 @@
+echo -e "Updating your server\n"
+
+sudo apt-get update
+
+echo -e "Installing UFW\n"
+
+# No-prompt installation of ufw
+sudo apt-get install -y ufw
+
+echo -e "UFW install succesfully...\n"
+echo -e "Setting up UFW firewall settings.\n"
+
+# Allow Outgoing and Deny Incoming
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allow ports
+sudo ufw allow 22
+echo -e "Port 22 allowed.\n"
+sudo ufw allow 80
+echo -e "Port 80 allowed.\n"
+sudo ufw allow 443
+echo -e "Port 443 allowedn.\n"
+
+# Enable Fire Wall
+sudo ufw enable
+
+echo -e "Firewall Setup Complete.\n"
+echo -e "Ports 22, 80, 443 are open on your server.\n"
