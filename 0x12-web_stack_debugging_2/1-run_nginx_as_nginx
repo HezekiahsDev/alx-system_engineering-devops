@@ -1,25 +1,7 @@
 #!/usr/bin/env bash
-
-# Fix server bugs (nginx)
-
-# Stop nginx server
-sudo service nginx stop
-
-# change user to nginx
-sudo sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
-
-# Bind to port 8080
-sudo sed -i "s/80/8080/" /etc/nginx/sites-enabled/default
-
-# change permission to 644
+# A BASH Script that runs nignx webserver as nginx and also configures nginx to
+# listen to port 8080
+pkill apache2
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 chmod 644 /etc/nginx/nginx.conf
-
-# change ownership to nginx
-chown nginx:nginx /etc/nginx/ -R
-
-# kill all pid running on port 8080
-for pid in $(pidof apache2); do
-	kill "$pid"
-done
-# restart nginx
-sudo -u nginx service nginx start
+sudo -u nginx service nginx restart
