@@ -1,4 +1,4 @@
-CREATE USER holberton_user@localhost IDENTIFIED BY "hbtn";
+CREATE USER holberton_user@localhost IDENTIFIED BY "projectcorrection280hbtn";
 GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
 CREATE DATABASE tyrell_corp;
 USE tyrell_corp;
@@ -8,5 +8,5 @@ GRANT SELECT ON tyrell_corp.nexus6 TO holberton_user@localhost;
 CREATE USER replica_user@'%' IDENTIFIED BY "slave";
 GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
 GRANT SELECT ON mysql.user TO holberton_user@localhost;
-CREATE USER web-02@34.227.101.160 IDENTIFIED BY "slave";
-GRANT REPLICATION SLAVE ON *.* TO web-02@34.227.101.160;
+CREATE USER web02@54.221.185.74 IDENTIFIED BY "slave";
+GRANT REPLICATION SLAVE ON *.* TO web02@54.221.185.74;
