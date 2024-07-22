@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# intall nginx server and set port to 80
+# initialize the helloworld html page
+
+echo -e "Preparing instalation...........\n"
+sudo apt-get update -y -qq && \
+sudo apt-get install nginx -y
+
+echo -e "\nNginx is initiilaizing............\n"
+
+# start nginx
+sudo service nginx start
+
+# allow firewall
+sudo ufw allow 'Nginx HTTP'
+
+# set ownership
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# default index page
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# create hello world
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+# Restart nginx server
+sudo service nginx restart
+
+echo -e "\n Set up complete.....\n"
