@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Set up nginx server and set port to 80
+
+
+echo -e "Updating your server ...........\n"
+sudo apt-get update -y -qq && \
+sudo apt-get install nginx -y
+
+echo -e "\nInitializing nginx server.........\n"
+
+# start server
+sudo service nginx start
+
+# set firewall
+sudo ufw allow 'Nginx HTTP'
+
+# set ownership
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# backup index file
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# Create new index
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# forward /redirect_me to a youtube video
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# Restart nginx server
+sudo service nginx restart
+
+echo -e "\nSetuo complete ..........\n"
