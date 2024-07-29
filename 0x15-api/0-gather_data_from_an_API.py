@@ -14,13 +14,13 @@ if __name__ == '__main__':
         if re.fullmatch(r'\d+', sys.argv[1]):
             id = int(sys.argv[1])
             request_user = requests.get('{}/users/{}'.format(REST_API,
-                        id)).json()
+                        	id)).json()
             request_todo = requests.get('{}/todos'.format(REST_API)).json()
             request_name = request_user.get('name')
             track_tasks = list(filter(lambda x: x.get('userId') == id,
-                            request_todo))
+                       		request_todo))
             completed_tasks = list(filter(lambda x: x.get('completed'),
-                            track_tasks))
+                            	track_tasks))
             print(
                 'Employee {} is done with tasks({}/{}):'.format(
                     request_name,
