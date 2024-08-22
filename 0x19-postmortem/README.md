@@ -6,14 +6,14 @@ Impact: KryptX Payment Gateway, the lifeline for USDT transactions on Binance Sm
 Root Cause: A sneaky misconfiguration in our smart contract triggered excessive gas fees, causing transactions to fail. And just when we thought we fixed it, we accidentally turned the coffee machine off entirely with a buggy hotfix.
 
 ## Timeline: The Play-by-Play of the Coffee Fiasco
-11:00 AM: Monitoring alerts start pinging like crazy, signaling a surge in transaction failures. Picture the fire alarm going off, but instead of fire, it’s a coffee machine spitting out empty cups.
-11:05 AM: Our engineers race to the blockchain explorer, assuming it’s just BSC’s morning rush hour. Nope, no luck there.
-11:15 AM: We think, “It’s gotta be the network!”—so we try rerouting transactions to different nodes. That’s like trying to order from another barista, but the line’s just as long.
-11:30 AM: Smart contract devs get tagged in. The culprit? Gas fees that went through the roof, like trying to order a simple black coffee but getting charged for a triple-shot caramel macchiato with extra foam.
-12:00 PM: We deploy a hotfix, hoping to cool things down, but instead, we shut down the coffee machine altogether. Now, nobody’s getting any coffee—or transactions.
-12:30 PM: Rollback time! We bring the old setup back, but things are still grinding like stale coffee beans.
-1:00 PM: Finally, we pinpoint the issue: a misconfigured gas limit in the smart contract, basically a clogged coffee filter. We get it sorted out, clean the machine, and fire it back up.
-1:45 PM: Success! The coffee flows, err, transactions process smoothly again, and the caffeine-deprived masses rejoice.
+11:00 AM: Monitoring alerts start pinging like crazy, signaling a surge in transaction failures. Picture the fire alarm going off, but instead of fire, it’s a coffee machine spitting out empty cups.\n
+11:05 AM: Our engineers race to the blockchain explorer, assuming it’s just BSC’s morning rush hour. Nope, no luck there.\n
+11:15 AM: We think, “It’s gotta be the network!”—so we try rerouting transactions to different nodes. That’s like trying to order from another barista, but the line’s just as long.\n
+11:30 AM: Smart contract devs get tagged in. The culprit? Gas fees that went through the roof, like trying to order a simple black coffee but getting charged for a triple-shot caramel macchiato with extra foam.\n
+12:00 PM: We deploy a hotfix, hoping to cool things down, but instead, we shut down the coffee machine altogether. Now, nobody’s getting any coffee—or transactions.\n
+12:30 PM: Rollback time! We bring the old setup back, but things are still grinding like stale coffee beans.\n
+1:00 PM: Finally, we pinpoint the issue: a misconfigured gas limit in the smart contract, basically a clogged coffee filter. We get it sorted out, clean the machine, and fire it back up.\n
+1:45 PM: Success! The coffee flows, err, transactions process smoothly again, and the caffeine-deprived masses rejoice.\n
 
 ## Root Cause and Resolution: Cleaning the Coffee Filter
 Turns out, the real culprit was a misconfigured gas limit in our smart contract—kind of like setting your coffee machine to use just one scoop of grounds when you need three. Transactions were failing left and right because the gas fees were too high, causing the blockchain equivalent of a burnt brew.
